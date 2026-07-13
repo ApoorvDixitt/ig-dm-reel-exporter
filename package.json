@@ -30,6 +30,6 @@
   },
   "homepage": "https://github.com/ApoorvDixitt/ig-dm-reel-exporter#readme",
   "devDependencies": {
-    "web-ext": "^8.0.0"
+    "web-ext": "^10.5.0"
   }
 }
