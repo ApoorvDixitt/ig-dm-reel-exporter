@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Shared-Link Extractor icon">
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="#3B4C9A"/>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="none" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="2"/>
+  <!-- Two interlocking rings = "extract links" -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="11">
+    <ellipse cx="50" cy="64" rx="26" ry="16.5"/>
+    <ellipse cx="78" cy="64" rx="26" ry="16.5"/>
+  </g>
+</svg>
