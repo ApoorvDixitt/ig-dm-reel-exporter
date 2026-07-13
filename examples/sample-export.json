@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "1.1",
+  "extraction": {
+    "extractedAt": "2026-07-13T14:49:47.447Z",
+    "extractedAtUnix": 1783954187,
+    "toolVersion": "3.1.0"
+  },
+  "source": {
+    "threadId": "340282366920938463",
+    "chatWith": "me_example, friend_example",
+    "participants": [
+      "me",
+      "friend_example"
+    ],
+    "viewerId": 42
+  },
+  "extractionWindow": {
+    "mode": "all",
+    "requestedStart": null,
+    "requestedEnd": null,
+    "actualOldestShare": "2026-01-04T18:35:30.000Z",
+    "actualNewestShare": "2026-02-04T18:43:44.000Z",
+    "messagesScanned": 5
+  },
+  "summary": {
+    "uniqueShares": 3,
+    "totalShareMessages": 4,
+    "duplicatesInChat": 1,
+    "skipped": 1,
+    "skippedByReason": {
+      "missing_media_object": 1
+    },
+    "byCategory": {
+      "reels": 1,
+      "posts": 1,
+      "carousels": 1
+    }
+  },
+  "reels": {
+    "count": 1,
+    "items": [
+      {
+        "shortcode": "DExAmPLeAA1",
+        "url": "https://www.instagram.com/reel/DExAmPLeAA1/",
+        "ownerUsername": "travel.creator",
+        "caption": "Sunset timelapse from the rooftop 🌇 full clip on the channel #sunset #timelapse #travel",
+        "itemType": "clip",
+        "shareCount": 2,
+        "occurrences": [
+          {
+            "messageId": "msg_1001",
+            "sharedBy": "friend_example",
+            "sharedAt": "2026-01-04T18:35:30.000Z",
+            "sharedAtUnix": 1767551730
+          },
+          {
+            "messageId": "msg_1042",
+            "sharedBy": "me",
+            "sharedAt": "2026-02-04T18:43:44.000Z",
+            "sharedAtUnix": 1770230624
+          }
+        ],
+        "firstSharedAt": "2026-01-04T18:35:30.000Z",
+        "lastSharedAt": "2026-02-04T18:43:44.000Z",
+        "media": {
+          "thumbnailUrl": "https://example-cdn.invalid/thumb/DExAmPLeAA1.jpg",
+          "videoDurationSec": 26.5,
+          "audioTitle": "Original audio",
+          "audioArtist": "travel.creator",
+          "likeCount": 1234,
+          "viewCount": 98765
+        }
+      }
+    ]
+  },
+  "posts": {
+    "count": 1,
+    "items": [
+      {
+        "shortcode": "DPoStExMpL9",
+        "url": "https://www.instagram.com/p/DPoStExMpL9/",
+        "ownerUsername": "design.studio",
+        "caption": "New brand refresh — swipe-free single post.",
+        "itemType": "media_share",
+        "shareCount": 1,
+        "occurrences": [
+          {
+            "messageId": "msg_1099",
+            "sharedBy": "friend_example",
+            "sharedAt": "2026-01-09T23:06:40.000Z",
+            "sharedAtUnix": 1768000000
+          }
+        ],
+        "firstSharedAt": "2026-01-09T23:06:40.000Z",
+        "lastSharedAt": "2026-01-09T23:06:40.000Z",
+        "media": {
+          "thumbnailUrl": "https://example-cdn.invalid/thumb/DPoStExMpL9.jpg",
+          "videoDurationSec": null,
+          "audioTitle": null,
+          "audioArtist": null,
+          "likeCount": 88,
+          "viewCount": null
+        }
+      }
+    ]
+  },
+  "carousels": {
+    "count": 1,
+    "items": [
+      {
+        "shortcode": "DCaRouSeL77",
+        "url": "https://www.instagram.com/p/DCaRouSeL77/",
+        "ownerUsername": "photo.dump",
+        "caption": null,
+        "itemType": "media_share",
+        "shareCount": 1,
+        "occurrences": [
+          {
+            "messageId": "msg_1120",
+            "sharedBy": "friend_example",
+            "sharedAt": "2026-01-21T12:53:20.000Z",
+            "sharedAtUnix": 1769000000
+          }
+        ],
+        "firstSharedAt": "2026-01-21T12:53:20.000Z",
+        "lastSharedAt": "2026-01-21T12:53:20.000Z",
+        "media": {
+          "thumbnailUrl": "https://example-cdn.invalid/thumb/DCaRouSeL77_0.jpg",
+          "videoDurationSec": null,
+          "audioTitle": null,
+          "audioArtist": null,
+          "likeCount": null,
+          "viewCount": null
+        }
+      }
+    ]
+  },
+  "skippedShares": {
+    "count": 1,
+    "items": [
+      {
+        "messageId": "msg_1150",
+        "itemType": "clip",
+        "reason": "missing_media_object",
+        "sharedBy": "friend_example",
+        "sharedAt": "2026-01-27T07:46:40.000Z",
+        "sharedAtUnix": 1769500000
+      }
+    ]
+  }
+}
