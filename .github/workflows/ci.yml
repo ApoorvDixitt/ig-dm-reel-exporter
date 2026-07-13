@@ -20,7 +20,9 @@ jobs:
           node-version: "20"
 
       - name: Validate manifest.json is valid JSON
-        run: node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8')); console.log('manifest.json: valid JSON')"
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8'))"
+          echo "manifest.json parsed OK"
 
       - name: Syntax-check all extension JavaScript
         run: |
