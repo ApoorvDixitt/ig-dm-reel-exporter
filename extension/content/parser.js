@@ -178,6 +178,27 @@ var ChatParser = (() => {
     return value || null;
   }
 
+  // Structural snapshot of a raw thread item, attached to skipped shares only,
+  // so we can see WHERE the media lives (or that it is absent) when Instagram
+  // changes payload shapes. It is PII-safe: scalar VALUES are never emitted —
+  // only their type ("string"/"number"/…). Recurses to a bounded depth so a
+  // nested media object (e.g. direct_media_share.media.code) is visible.
+  function structuralFingerprint(value, depth) {
+    const d = depth || 0;
+    if (value === null) return 'null';
+    if (typeof value !== 'object') return typeof value;      // scalar → type only
+    if (Array.isArray(value)) {
+      if (!value.length) return 'array(0)';
+      return { arrayLen: value.length, elem: d < 3 ? structuralFingerprint(value[0], d + 1) : typeof value[0] };
+    }
+    if (d >= 3) return 'object(…)';
+    const out = {};
+    for (const key of Object.keys(value).slice(0, 40)) {
+      out[key] = structuralFingerprint(value[key], d + 1);
+    }
+    return out;
+  }
+
   /**
    * Parse a single thread item into a normalized "share candidate".
    *
@@ -229,7 +250,11 @@ var ChatParser = (() => {
       }
 
       case 'media_share': {
-        const shared = item.media_share || null;
+        // Current Instagram payloads nest the shared media under
+        // `direct_media_share.media`; older ones used `media_share` directly.
+        const shared = (item.direct_media_share && item.direct_media_share.media)
+          || item.media_share
+          || null;
         if (!shared) {
           skipReason = 'missing_media_object';
           category = 'post';
@@ -238,7 +263,9 @@ var ChatParser = (() => {
           ownerUsername = (shared.user && shared.user.username) || null;
           caption = captionText(shared.caption);
           media = extractMediaMeta(shared);
-          category = shared.media_type === 8 ? 'carousel' : 'post';
+          // media_type 8 or the presence of a carousel_media array => carousel.
+          const isCarousel = shared.media_type === 8 || Array.isArray(shared.carousel_media);
+          category = isCarousel ? 'carousel' : 'post';
           if (!shortcode) skipReason = 'no_shortcode';
         }
         break;
@@ -287,6 +314,8 @@ var ChatParser = (() => {
 
     if (!shortcode) {
       // Share-type item that yielded no usable shortcode → counted as skipped.
+      // Attach a keys-only structural fingerprint so an unexpected payload
+      // shape can be diagnosed from the export without a raw dump.
       return {
         ...base,
         valid: false,
@@ -297,6 +326,7 @@ var ChatParser = (() => {
         ownerUsername: null,
         caption: null,
         media: emptyMediaMeta(),
+        debug: structuralFingerprint(item),
       };
     }
 
@@ -359,6 +389,7 @@ var ChatParser = (() => {
           sharedBy: s.sharedBy,
           sharedAt: s.sharedAt,
           sharedAtUnix: s.sharedAtUnix,
+          debug: s.debug || null,
         });
         continue;
       }
@@ -458,7 +489,7 @@ var ChatParser = (() => {
       extraction: {
         extractedAt: now.toISOString(),
         extractedAtUnix: Math.floor(now.getTime() / 1000),
-        toolVersion: '3.1.0',
+        toolVersion: '3.1.2',
       },
       source: {
         threadId: threadInfo.thread_id || '',

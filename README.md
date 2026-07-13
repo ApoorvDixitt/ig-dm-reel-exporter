@@ -30,6 +30,8 @@ If you and a friend trade reels in the DMs all day, this turns that thread into 
 4. Click **Load unpacked** and select the **`extension/`** folder inside this repo.
 5. Pin the extension and make sure you're logged into [instagram.com](https://www.instagram.com).
 
+> Prefer a packaged build? Grab the latest `.zip` from [Releases](https://github.com/ApoorvDixitt/ig-dm-reel-exporter/releases), unzip it, and **Load unpacked** the resulting folder.
+
 ## Quickstart
 
 1. Open a Direct thread in Instagram's **full web view** (`instagram.com/direct/t/…`).

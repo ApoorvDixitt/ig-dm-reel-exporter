@@ -1,6 +1,6 @@
 {
   "name": "ig-dm-reel-exporter",
-  "version": "3.1.0",
+  "version": "3.1.2",
   "description": "Chrome MV3 extension that exports reels/posts/carousels shared in an Instagram Direct thread as one structured JSON for knowledge-base import.",
   "private": true,
   "type": "module",

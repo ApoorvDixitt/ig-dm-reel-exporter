@@ -9,6 +9,21 @@ JSON export track this same number.
 
 ## [Unreleased]
 
+## [3.1.2] - 2026-07-13
+
+### Fixed
+- Shared **posts and carousels** were all dropped (`byCategory` showed `posts: 0,
+  carousels: 0`). Instagram now nests a shared feed post/carousel under
+  `direct_media_share.media` for `item_type: "media_share"`, instead of the
+  legacy `media_share` key. The parser now reads `direct_media_share.media`
+  first and falls back to `media_share`. Carousels are detected by
+  `media_type === 8` **or** the presence of a `carousel_media` array.
+
+### Added
+- A PII-safe `debug` structural fingerprint on `skippedShares` items (field
+  keys and value *types* only — never caption/username/message text) so future
+  Instagram payload-shape changes can be diagnosed straight from an export.
+
 ## [3.1.0] - 2026-07-13
 
 Initial public release of **ig-dm-reel-exporter** — a focused Chrome MV3 tool

@@ -133,6 +133,7 @@ thin export is debuggable rather than silent.
 | `sharedBy` | string | Sender username, or `"me"`. |
 | `sharedAt` | string (ISO) \| null | When it was sent. |
 | `sharedAtUnix` | int (seconds) \| null | Same instant, epoch seconds. |
+| `debug` | object \| null | PII-safe structural fingerprint of the raw item (field keys and value *types* only — never caption/username/message text), to a bounded depth. Present only on skipped items; used to locate where media lives when Instagram changes payload shapes. |
 
 ### Skip reasons
 
