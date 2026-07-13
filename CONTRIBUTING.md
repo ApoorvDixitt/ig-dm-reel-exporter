@@ -18,9 +18,13 @@ Or just load it manually: `chrome://extensions` → **Developer mode** → **Loa
 ### Checks before you push
 
 ```bash
-npm run lint                                   # web-ext lint of extension/
-node --check extension/content/parser.js       # (and the other .js files) — syntax
+npm run validate      # validates manifest.json + syntax-checks every extension/*.js (this is what CI runs)
 ```
+
+`web-ext lint` is intentionally **not** part of CI: it targets Firefox and flags
+our deliberate Chrome-only choices (service-worker background, no add-on ID) as
+errors. `npm start` / `npm run build` still use `web-ext` for a Chromium dev
+profile and packaging.
 
 The parser is pure, dependency-free JavaScript, so its logic can be exercised in Node without a browser (load `extension/content/parser.js`, feed a synthetic thread payload to `ChatParser.parseShare` + `ChatParser.buildCategorizedOutput`, and assert on the output). Please add or update such checks when you change parsing/classification.
 
@@ -28,7 +32,7 @@ The parser is pure, dependency-free JavaScript, so its logic can be exercised in
 
 1. Create a branch off `main`: `feat/short-description` or `fix/short-description`.
 2. Make atomic commits using [Conventional Commits](https://www.conventionalcommits.org): `feat(parser): …`, `fix(popup): …`, `docs: …`, `chore(ci): …`.
-3. Ensure lint passes and the extension loads without manifest errors.
+3. Ensure `npm run validate` passes and the extension loads without manifest errors.
 4. Open a pull request, fill in the template, and link any related issue.
 5. The maintainer squash-merges once checks pass and the review is approved. `main` keeps a linear history.
 

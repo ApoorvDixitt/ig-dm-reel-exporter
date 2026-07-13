@@ -6,9 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "web-ext run --source-dir=extension --target=chromium",
-    "start:firefox": "web-ext run --source-dir=extension",
-    "lint": "web-ext lint --source-dir=extension",
-    "build": "web-ext build --source-dir=extension --artifacts-dir=dist --overwrite-dest"
+    "build": "web-ext build --source-dir=extension --artifacts-dir=dist --overwrite-dest",
+    "validate": "node -e \"JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8'))\" && find extension -name '*.js' -exec node --check {} +"
   },
   "keywords": [
     "instagram",
@@ -30,6 +29,6 @@
   },
   "homepage": "https://github.com/ApoorvDixitt/ig-dm-reel-exporter#readme",
   "devDependencies": {
-    "web-ext": "^8.0.0"
+    "web-ext": "^10.5.0"
   }
 }

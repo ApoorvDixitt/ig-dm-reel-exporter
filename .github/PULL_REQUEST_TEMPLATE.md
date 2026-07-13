@@ -8,7 +8,7 @@ Closes #
 
 ## Checklist
 
-- [ ] `npm run lint` passes and the extension loads in `chrome://extensions` with no manifest errors
+- [ ] `npm run validate` passes and the extension loads in `chrome://extensions` with no manifest errors
 - [ ] Parsing/classification changes are covered by a Node check against a synthetic payload
 - [ ] Docs / `CHANGELOG.md` updated if behavior or the export schema changed
 - [ ] Commits follow [Conventional Commits](https://www.conventionalcommits.org)

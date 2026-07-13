@@ -29,9 +29,3 @@ jobs:
           set -euo pipefail
           find extension -name '*.js' -print0 | xargs -0 -n1 node --check
           echo "all extension JS parsed OK"
-
-      - name: web-ext lint (advisory)
-        # Downloads web-ext on the fly (no lockfile needed). Advisory for now;
-        # once a package-lock.json is committed this can become `npm ci && npm run lint`.
-        run: npx --yes web-ext lint --source-dir=extension
-        continue-on-error: true
