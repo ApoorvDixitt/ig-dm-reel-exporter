@@ -1,0 +1,35 @@
+{
+  "name": "ig-dm-reel-exporter",
+  "version": "3.1.0",
+  "description": "Chrome MV3 extension that exports reels/posts/carousels shared in an Instagram Direct thread as one structured JSON for knowledge-base import.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "web-ext run --source-dir=extension --target=chromium",
+    "start:firefox": "web-ext run --source-dir=extension",
+    "lint": "web-ext lint --source-dir=extension",
+    "build": "web-ext build --source-dir=extension --artifacts-dir=dist --overwrite-dest"
+  },
+  "keywords": [
+    "instagram",
+    "chrome-extension",
+    "manifest-v3",
+    "reels",
+    "direct-messages",
+    "exporter",
+    "knowledge-base"
+  ],
+  "author": "Apoorv Dixit (@ApoorvDixitt)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ApoorvDixitt/ig-dm-reel-exporter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ApoorvDixitt/ig-dm-reel-exporter/issues"
+  },
+  "homepage": "https://github.com/ApoorvDixitt/ig-dm-reel-exporter#readme",
+  "devDependencies": {
+    "web-ext": "^8.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# web-ext build output
+dist/
+web-ext-artifacts/
+*.zip
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local env
+.env
+.env.local

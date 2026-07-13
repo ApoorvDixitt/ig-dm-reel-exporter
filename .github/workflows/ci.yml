@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      # Actions are pinned to full commit SHAs (supply-chain hardening).
+      # The trailing "# vX" is for humans; Dependabot bumps the SHA.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
+        with:
+          node-version: "20"
+
+      - name: Validate manifest.json is valid JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8')); console.log('manifest.json: valid JSON')"
+
+      - name: Syntax-check all extension JavaScript
+        run: |
+          set -euo pipefail
+          find extension -name '*.js' -print0 | xargs -0 -n1 node --check
+          echo "all extension JS parsed OK"
+
+      - name: web-ext lint (advisory)
+        # Downloads web-ext on the fly (no lockfile needed). Advisory for now;
+        # once a package-lock.json is committed this can become `npm ci && npm run lint`.
+        run: npx --yes web-ext lint --source-dir=extension
+        continue-on-error: true
